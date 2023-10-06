@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenAI ChatGPT API 成本计算器（中文版）</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="https://openkey.cloud/logo.png"/>
+    <!-- Good information about this page -->
+    <meta name="description" content="OpenAI ChatGPT API 成本计算器（中文版）是一款专门为团队和开发者设计的工具，可以帮助用户准确预算和规划他们在项目中使用ChatGPT API的成本。">
+    <meta name="keywords" content="ChatGPT, OpenAI, API, 人工智能, 成本计算, 开发者工具, 免费开源, OpenKey, Github, 方便易用, 估算项目成本, 精确性高, 节省成本">
+    <meta name="author" content="openkey.cloud">
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//matomo.gptocean.com/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '18']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aladin&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BWXSYQYTZ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BWXSYQYTZ1');
+</script>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "h5dtj175aw");
+</script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">OpenAI ChatGPT API 成本计算器（中文版）</h1>
+		<a href="https://github.com/terobox/ChatGPT-Cost-Calculator" target="_blank" rel="noopener noreferrer" style="display: block; margin: 0 auto; text-decoration: none; color: #a61b29; text-align: center;">GitHub链接</a>
+        <br>
+		<h2 class="description">
+            这是一款专门为团队和开发者设计的工具，可以帮助用户准确预算和规划他们在项目中使用ChatGPT API的成本。
+        </h2>
+        <div class="input-group">
+            <label for="word-count">输入汉字数量:</label>
+            <input type="number" id="word-count" oninput="calcularResultado()" placeholder="e.g. 1000">
+        </div>
+          <div class="word-count-buttons">
+            <button class="word-count-btn pink" data-words="10000">1万</button>
+            <button class="word-count-btn green" data-words="200000">20万</button>
+            <button class="word-count-btn orange" data-words="1000000">100万</button>
+            <button class="word-count-btn blue" data-words="5000000">500万</button>
+            <button class="word-count-btn violet" data-words="10000000">1000万</button>
+        </div>
+        <div class="input-group selstyle">
+          <div class="selstyle">
+            <label>选择语言模型:</label>
+            <select id="model">
+                <option value="chatgpt-4k">GPT-3.5-Turbo 4K</option>
+				<option value="chatgpt-16k">GPT-3.5-Turbo 16K</option>
+                <option value="gpt4-8k">GPT-4.0 8K</option>
+                <option value="gpt4-32k">GPT-4 32K</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group">
+            <button id="calculate-btn">开始计算</button>
+        </div>
+        <div class="result-container">
+            <h2>评估成本:</h2>
+            <p id="result">$0.00</p>
+        </div>
+    </div>
+    <div class="poweredby"><a href='#about-modal' class="modal-link"><button>关于我们</button></a></div>
+    <div class="cookie-notification">
+        <p>我们使用cookies来提高您在我们网站上的浏览体验。继续使用我们的网站，即表示您同意我们使用cookies。</p>
+        <button id="cookie-accept">接受</button>
+      </div>
+      
+        <div id="about-modal" class="modal">
+          <div class="modal-content">
+            <br><br>
+            <h2>关于我们</h2>
+            <br>
+            <p>OpenAI ChatGPT API 成本计算器（中文版）是一款专门为团队和开发者设计的工具，可以帮助用户准确预算和规划他们在项目中使用ChatGPT API的成本。
+				<br><br>
+                <h3>主要特点和功能：</h3>
+				<br>
+                1) 基于中文汉字的的 API 价格/成本计算器，对中文开发者更加友好；
+				<br>
+                2) 可以帮助用户估算项目成本，规划API使用；
+				<br>
+				3) 精确性高，简单易懂。
+				<br><br>
+                <h3>计算细节：</h3>
+				<br>
+				1) 模型对应的价格：
+				<br><br>
+				GPT-3.5-Turbo 4K - $0.002 / 1K tokens
+				<br>
+				GPT-3.5-Turbo 16K - $0.004 / 1K tokens
+				<br>
+				GPT-4.0 8K - $0.06 / 1K tokens
+				<br>
+				GPT-4.0 32K - $0.12 / 1K tokens
+				<br><br>
+				
+				2) 计算公式：
+				<br><br>
+				成本 = (中文字数 * 2 / 1000) * 模型价格
+				<br><br>
+				<h3>团队介绍：</h3>
+				<br>
+				<a href="https://openkey.cloud/" target="_blank" style="color: #B13A3D;">OpenKey.Cloud</a> - 提供企业级专业稳定的 ChatGPT 接口集成分发服务。
+                <button class="modal-close">关闭</button>
+          </div>
+        </div>
+		
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="cookies.js"></script>
+    <script src="modal.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
